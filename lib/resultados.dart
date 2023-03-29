@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class Resultados extends StatelessWidget {
@@ -9,8 +11,12 @@ class Resultados extends StatelessWidget {
       appBar: AppBar(
         title: Text('CALCULADORA IMC'),
       ),
-
-      body: Column(
+      body: _body(),       
+    );
+  }
+  _body(){
+        List results = getResult();
+      return Column(        
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -22,49 +28,71 @@ class Resultados extends StatelessWidget {
               ),
             ),
           ),
+          ),          
+            Expanded(
+          flex: 12,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    color: Colors.white10,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(results[0].toUpperCase(),
+                                  style: TextStyle(
+                                      color: results[1],
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(imc.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 60,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Text(results[2],
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        color: Colors.white70, fontSize: 18)),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-          Expanded(
-            flex: 9,
-            child: Container(
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                
-                children: [
-                  Text('PESO SALUDABLE',style: TextStyle(
-                    fontSize: 22.0, 
-                    fontWeight: FontWeight.bold, 
-                    color: Color.fromARGB(240, 6, 6, 255)
-                    ),
-                  ),
-                  Text(imc.toString(),style: TextStyle(
-                    fontSize: 70.0, 
-                    fontWeight: FontWeight.bold, 
-                    color: Colors.black
-                    ),
-                  ),
-                  Text('Su IMC indica que su peso esta en la categoria peso saludable', style: TextStyle(
-                    fontSize: 22.0, 
-                    color: Colors.black
-                    ),
-                    textAlign: TextAlign.center,
-                    ),
-                    ElevatedButton(
-                    child: Text('Volver a calcular'),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    ),
-                    
-                ],
-              ),
-            ), 
-            ),
+        )
         ],
-      ),
-    );
-  }
+      );
+    }
    List getResult() {
     if (imc < 18.5) {
       return [
