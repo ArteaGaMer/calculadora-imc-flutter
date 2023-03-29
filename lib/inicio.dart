@@ -2,8 +2,8 @@ import 'package:ejemplo21/resultados.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const inactiveColor = Color(0xFF1D1E33);
-const activeColor = Color(0xFF3700B3);
+const inactiveColor = Color.fromARGB(255, 133, 133, 133);
+const activeColor = Color.fromARGB(244, 0, 255, 221);
 
 enum Genero {
   hombre,
@@ -33,7 +33,7 @@ class _InicioState extends State<Inicio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MONITOR DE SALUD'),
+        title: Center(child: Text('MONITOR DE SALUD')),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -59,7 +59,7 @@ class _InicioState extends State<Inicio> {
                     children: [
                       Icon(FontAwesomeIcons.mars, size: 65.0,),
                       SizedBox(height: 5.0,),
-                      Text('Hombre', style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),)
+                      Text('Hombre', style: TextStyle(fontSize: 18.0, color: Color.fromARGB(255, 220, 178, 79)),)
                     ],
                   ),
                 ),
@@ -83,11 +83,12 @@ class _InicioState extends State<Inicio> {
                     children: [
                       Icon(FontAwesomeIcons.venus, size: 65.0,),
                       SizedBox(height: 5.0,),
-                      Text('Mujer', style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),)
+                      Text('Mujer', style: TextStyle(fontSize: 18.0, color: Color.fromARGB(255, 220, 178, 79)),)
                     ],
                   ),
                 ),
-              )),
+              )
+              ),
             ],
           )),
           Expanded(child: Container(
@@ -102,7 +103,7 @@ class _InicioState extends State<Inicio> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Altura', style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98), fontWeight: FontWeight.w900),),
+                    Center(child: Text('Altura', style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98), fontWeight: FontWeight.w900),)),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -116,28 +117,26 @@ class _InicioState extends State<Inicio> {
                       data : SliderTheme.of(context).copyWith(
                           thumbShape: RoundSliderThumbShape(disabledThumbRadius: 15.0),
                           overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
-                          thumbColor: Color(0xFFEB1555),
-                          activeTrackColor: Colors.white,
+                          thumbColor: Color.fromARGB(255, 21, 46, 235),
+                          activeTrackColor: Color.fromARGB(255, 90, 88, 205),
                           overlayColor: Color(0x29EB1555),
-                          inactiveTrackColor: Color(0xFF8D8E98)
+                          inactiveTrackColor: Color.fromARGB(255, 200, 201, 207)
                         ),
                       child: Slider(
                         value: altura.toDouble(),
                         min: 40.0,
                         max: 210,
                         onChanged: (double nuevoValor) {
-                          //print(nuevoValor);
                           setState(() {
                             altura = nuevoValor.round();
                           });
                         },
-                       // activeColor: Color(0xFFEB1555),
-                       // inactiveColor: Color(0xFF8D8E98),
                       ),
                     )
                   ],
                 ),
-              )),
+              )
+              ),
           Expanded(child: Row(
             
             children: [
@@ -178,11 +177,8 @@ class _InicioState extends State<Inicio> {
                         )
                       ],
                     )
-                  ],
-                  
-                ),
-
-                
+                  ], 
+                ),  
               ),),
               Expanded(child: Container(
                 height: 200,
@@ -222,13 +218,12 @@ class _InicioState extends State<Inicio> {
                       ],
                     )
                   ],
-                  
                 ),
-                
-                
-              ),),
+              ),
+              ),
             ],
-          )),
+          )
+          ),
            GestureDetector(
             onTap: () {
                     imc = (peso /

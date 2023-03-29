@@ -9,7 +9,7 @@ class Resultados extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CALCULADORA IMC'),
+        title: Center(child: Text('CALCULADORA IMC')),
       ),
       body: _body(),       
     );
@@ -22,9 +22,11 @@ class Resultados extends StatelessWidget {
         children: [
           Expanded(child: 
           Container(
-            child: Text('RESULTADOS', style: TextStyle(
-              fontSize: 35.0, 
-              fontWeight: FontWeight.bold
+            child: Center(
+              child: Text('RESULTADOS', style: TextStyle(
+                fontSize: 35.0, 
+                fontWeight: FontWeight.bold
+                ),
               ),
             ),
           ),
@@ -97,25 +99,25 @@ class Resultados extends StatelessWidget {
     if (imc < 18.5) {
       return [
         "Bajo Peso",
-        Colors.orangeAccent,
+        Color.fromARGB(255, 210, 168, 112),
         "Tienes un bajo peso corporal. ¡Debes aumentar un poco de peso!"
       ];
     } else if (imc >= 18.5 && imc <= 24.9) {
       return [
         "Normal",
-        Colors.greenAccent,
+        Color.fromARGB(255, 71, 205, 87),
         "Tienes un peso corporal normal. ¡Buen trabajo!"
       ];
     } else if (imc >= 25 && imc <= 29.9) {
       return [
         "Sobrepeso",
-        Colors.deepOrange,
+        Color.fromARGB(255, 214, 222, 52),
         "Tienes un peso corporal en sobrepeso. ¡Debes bajar un poco de peso!"
       ];
     } else if (imc >= 30 && imc <= 34.9) {
       return [
         "Obesidad I",
-        Colors.redAccent,
+        Color.fromARGB(255, 231, 157, 54),
         "Tienes un peso corporal en obesidad nivel 1. ¡Debes bajar de peso!"
       ];
     } else if (imc >= 35 && imc <= 39.9) {
@@ -127,7 +129,7 @@ class Resultados extends StatelessWidget {
     } else if (imc >= 40 && imc <= 49.9) {
       return [
         "Obesidad III",
-        Colors.red,
+        Color.fromARGB(255, 130, 13, 5),
         "Tienes un peso corporal en obesidad nivel 3. ¡Debes bajar de peso ahora!"
       ];
     } else {
